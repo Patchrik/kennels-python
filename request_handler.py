@@ -1,5 +1,8 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from views import get_all_animals, get_single_animal
+from views.customers_requests import get_customer_by_id, get_customers
+from views.employee_requests import get_employee_by_id, get_employees
+from views.location_requests import get_all_locations, get_single_location
 
 
 # Here's a class. It inherits from another class.
@@ -78,6 +81,21 @@ class HandleRequests(BaseHTTPRequestHandler):
                 response = f"{get_single_animal(id)}"
             else:
                 response = f"{get_all_animals()}"
+        elif resource == "locations":
+            if id is not None:
+                response = f"{get_single_location(id)}"
+            else:
+                response = f"{get_all_locations()}"
+        elif resource == "employees":
+            if id is not None:
+                response = f"{get_employee_by_id(id)}"
+            else:
+                response = f"{get_employees()}"
+        elif resource == "customers":
+            if id is not None:
+                response = f"{get_customer_by_id(id)}"
+            else:
+                response = f"{get_customers()}"
 
         self.wfile.write(response.encode())
 
