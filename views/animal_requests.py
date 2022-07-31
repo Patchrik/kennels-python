@@ -22,7 +22,10 @@ ANIMALS = [
     }
 ]
 
-# Function with a single parameter
+
+def get_all_animals():
+    '''returns all animals and doesn't require a parameter'''
+    return ANIMALS
 
 
 def get_single_animal(id: str):
@@ -41,5 +44,17 @@ def get_single_animal(id: str):
     return requested_animal
 
 
-def get_all_animals():
-    return ANIMALS
+def create_animal(animal):
+    '''This function creates a single animal, param is a animal dict'''
+
+    # Add 1 to the last id in ANIMALS, ANIMALS[-1] gets the last dict in the list, then ['id'] tells it to grab the value with key of 'id'
+    new_id = ANIMALS[-1]["id"] + 1
+
+    # Add an `id` property to the animal dictionary
+    animal["id"] = new_id
+
+    # Add the animal dictionary to the list
+    ANIMALS.append(animal)
+
+    # Return the dictionary with `id` property added
+    return animal

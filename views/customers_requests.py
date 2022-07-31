@@ -21,3 +21,11 @@ def get_customer_by_id(id: str):
 def get_customers():
     '''Returns a list of all employees and takes no parameters'''
     return CUSTOMERS
+
+
+def create_customer(customer):
+    '''This function creates a new customer object based on the provided customer dict'''
+    new_id = CUSTOMERS[-1]['Id'] + 1
+    customer['id'] = new_id
+    CUSTOMERS.append(customer)
+    return customer

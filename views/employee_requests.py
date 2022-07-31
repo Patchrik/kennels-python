@@ -21,3 +21,11 @@ def get_employee_by_id(id: str):
 def get_employees():
     '''Returns a list of all employees and takes no parameters'''
     return EMPLOYEES
+
+
+def create_employee(employee):
+    '''This function creates a new employee, parameters is a employee dict'''
+    new_id = EMPLOYEES[-1]['id'] + 1
+    employee["id"] = new_id
+    EMPLOYEES.append(employee)
+    return employee
